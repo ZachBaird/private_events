@@ -1,0 +1,12 @@
+<h2> Create an event</h2>
+<p> Create an event and invite some folks!</p>
+
+<%= form_with url: '/events', method: :post do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+  <%= f.label :date, "Date" %>
+  <%= f.datetime_field :date %>
+  <%= f.submit %>
+<% end %>

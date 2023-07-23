@@ -1,0 +1,19 @@
+<p><%= @user.email %></p>
+
+<% if @user.created_events.any? %>
+  <p>Created Events: </p>
+  <% for event in @user.created_events %>
+    <%= link_to event.title, event %>
+  <% end %>
+<% else %>
+<p>You have created no events.</p>
+<% end %>
+
+<% if @user.attending_events.any? %>
+  <p>Attending Events: </p>
+  <% for attending_event in @user.attending_events %>
+    <%= link_to attending_event.attended_event.title, attending_event.attended_event %>
+  <% end %>
+<% else %>
+  <p> You haven't joined to any events.</p>
+<% end %>

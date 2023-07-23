@@ -1,0 +1,25 @@
+<%= link_to "Back", root_path %>
+
+<p>Title: <%= @event.title %></p>
+<br />
+<p>Description: <%= @event.description %></p>
+<br />
+<p> Creator: <%= @event.creator.email %></p>
+<p>Date: <%= @event.date.strftime("Planned for %H:%M%p on %m/%d/%Y") %></p>
+
+<% if @attendees.any? %>
+  <p>Attendees</p>
+  <% for attendee in @attendees %>
+    <p><%= attendee.email %></p>
+  <% end %>
+<% end %>
+
+<% if @event.creator == current_user %>
+  <%= button_to "Destroy", @event, method: :delete %>
+<% else %>
+  <% if @attending %>
+    <%= button_to "Leave", "/events/unattend/#{@event.id}", method: :delete %>
+  <% else %>
+    <%= button_to "Join", "/events/attend/#{@event.id}", method: :post %>
+  <% end %>
+<% end %>

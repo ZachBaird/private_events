@@ -1,0 +1,18 @@
+<p>Welcome!</p>
+
+<section class="events-section">
+  <% if @past_events.any? %>
+    <h2>Past Events</h2>
+    <% for event in @past_events %>
+      <%= link_to event.title, event %>
+    <% end %>
+  <% end %>
+  <% if @current_events.any? %>
+    <h2>Current Events</h2>
+    <% for event in @current_events %>
+      <%= link_to event.title, event %>
+    <% end %>
+  <% end %>
+</section>
+
+<%= link_to "Create Event", new_event_path %>
